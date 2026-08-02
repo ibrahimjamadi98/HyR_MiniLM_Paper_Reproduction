@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+title: >-
+  Reproduction artifact for "Budget-Matched Analysis of Compact
+  Cross-Encoder Reranking in Hybrid Retrieval"
+message: >-
+  If you use this artifact, please cite both the article and this
+  archived release.
+type: software
+authors:
+  - given-names: Ibrahim
+    family-names: Mohd Jamadi
+    email: ibrahim98@graduate.utm.my
+    affiliation: >-
+      Faculty of Artificial Intelligence, Universiti Teknologi
+      Malaysia
+  - given-names: Syahid
+    family-names: Anuar
+    affiliation: >-
+      Faculty of Artificial Intelligence, Universiti Teknologi
+      Malaysia
+repository-code: >-
+  https://github.com/ibrahimjamadi98/HyR_MiniLM_Paper_Reproduction
+license: CC-BY-4.0
+version: 1.0.0
+date-released: '2026-08-02'
+keywords:
+  - information retrieval
+  - hybrid retrieval
+  - cross-encoder reranking
+  - BEIR
+  - efficiency

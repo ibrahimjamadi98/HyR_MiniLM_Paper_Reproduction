@@ -1,0 +1,20 @@
+# data and model artifacts (archive these on Zenodo, not GitHub)
+*.zip
+*.parquet
+*.npy
+*.memmap
+embeddings/
+indexes/
+datasets/
+trec_runs/
+
+# notebook and python noise
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.venv/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
