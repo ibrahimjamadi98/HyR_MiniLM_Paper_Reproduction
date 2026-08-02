@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/30626894/README.md)
 # Reproduction artifact — Budget-Matched Analysis of Compact Cross-Encoder Reranking in Hybrid Retrieval
 
 Companion code and cached results for the IEEE Access article by Ibrahim Mohd
@@ -16,8 +15,11 @@ notebook that produced every reported number.
 | File | Contents |
 |---|---|
 | `HyR_MiniLM_Paper_Reproduction.ipynb` | Consolidated notebook, all outputs preserved as executed |
-| `tables/` | Exported CSV tables backing each manuscript table |
 | `CITATION.cff` | Citation metadata |
+| `LICENSE` | MIT |
+
+Because every cell's output is stored in the notebook, each reported number can
+be read directly from this repository without executing anything.
 
 The notebook is organized in three parts:
 
@@ -51,8 +53,9 @@ Reported openly rather than left for a reader to discover.
 **1. Three tables cannot be regenerated from this notebook.** Manuscript
 Tables 6, 7 and 23 derive from `Table_30_Budget_Matched_Comparison`,
 `Table_31_Budget_Matched_Latency` and `Table_32_GTE_FullCorpus_Latency`. Part II
-loads these from disk; the session that generated them was not saved. The CSVs
-themselves are included under `tables/`.
+loads these from disk; the session that generated them was not saved. The
+values as used are visible in the manuscript and in the Part II cell outputs
+stored in the notebook.
 
 **2. Five reranker latencies differ between notebook and manuscript.** Part I
 §31 prints 51.279, 58.792, 80.188, 115.997 and 83.523 ms; manuscript Table 12
@@ -99,5 +102,7 @@ Please cite the article, and the archived release if you use the code:
 
 ## Licence
 
-Code and cached outputs are released under CC BY 4.0. BEIR collections and
-pretrained models remain under their own licences.
+Code is released under the MIT Licence (see `LICENSE`). The cached CSV tables
+and derived outputs are released under CC BY 4.0. BEIR collections and
+pretrained model checkpoints remain under their own licences and are not
+redistributed here.

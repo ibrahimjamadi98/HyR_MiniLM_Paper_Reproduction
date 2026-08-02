@@ -20,7 +20,7 @@ authors:
       Malaysia
 repository-code: >-
   https://github.com/ibrahimjamadi98/HyR_MiniLM_Paper_Reproduction
-license: CC-BY-4.0
+license: MIT
 version: 1.0.0
 date-released: '2026-08-02'
 keywords:
