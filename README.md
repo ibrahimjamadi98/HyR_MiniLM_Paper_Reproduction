@@ -1,7 +1,7 @@
 # Reproduction artifact — Budget-Matched Analysis of Compact Cross-Encoder Reranking in Hybrid Retrieval
 
 Companion code and cached results for the IEEE Access article by Ibrahim Mohd
-Jamadi and Syahid Anuar.
+Jamadi, Syahid Anuar, Saad M. Ijad and Mohamed Alkaoud.
 
 The article evaluates compact cross-encoder reranking across eight BEIR
 collections and twelve systems under one protocol, holding the cross-encoder
@@ -92,7 +92,8 @@ Please cite the article, and the archived release if you use the code:
 
 ```bibtex
 @article{jamadi2026budget,
-  author  = {Mohd Jamadi, Ibrahim and Anuar, Syahid},
+  author  = {Mohd Jamadi, Ibrahim and Anuar, Syahid and
+             Ijad, Saad M. and Alkaoud, Mohamed},
   title   = {Budget-Matched Analysis of Compact Cross-Encoder Reranking
              in Hybrid Retrieval},
   journal = {IEEE Access},

@@ -10,19 +10,35 @@ authors:
   - given-names: Ibrahim
     family-names: Mohd Jamadi
     email: ibrahim98@graduate.utm.my
+    orcid: 'https://orcid.org/0009-0007-7571-3354'
     affiliation: >-
       Faculty of Artificial Intelligence, Universiti Teknologi
       Malaysia
   - given-names: Syahid
     family-names: Anuar
+    orcid: 'https://orcid.org/0000-0001-7869-0257'
     affiliation: >-
       Faculty of Artificial Intelligence, Universiti Teknologi
       Malaysia
+  - given-names: Saad M.
+    family-names: Ijad
+    orcid: 'https://orcid.org/0009-0001-0535-5148'
+    affiliation: >-
+      Department of Computer Science, College of Computer and
+      Information Sciences, King Saud University, Riyadh, Saudi
+      Arabia
+  - given-names: Mohamed
+    family-names: Alkaoud
+    orcid: 'https://orcid.org/0009-0005-5297-5189'
+    affiliation: >-
+      Department of Computer Science, College of Computer and
+      Information Sciences, King Saud University, Riyadh, Saudi
+      Arabia
 repository-code: >-
   https://github.com/ibrahimjamadi98/HyR_MiniLM_Paper_Reproduction
 license: MIT
-version: 1.0.0
-date-released: '2026-08-02'
+version: 1.0.1
+date-released: '2026-08-03'
 keywords:
   - information retrieval
   - hybrid retrieval
