@@ -1,47 +1,57 @@
 cff-version: 1.2.0
-title: >-
-  Reproduction artifact for "Budget-Matched Analysis of Compact
-  Cross-Encoder Reranking in Hybrid Retrieval"
-message: >-
-  If you use this artifact, please cite both the article and this
-  archived release.
+message: "If you use this artifact, please cite both the manuscript and the archived software release."
 type: software
-authors:
-  - given-names: Ibrahim
-    family-names: Mohd Jamadi
-    email: ibrahim98@graduate.utm.my
-    orcid: 'https://orcid.org/0009-0007-7571-3354'
-    affiliation: >-
-      Faculty of Artificial Intelligence, Universiti Teknologi
-      Malaysia
-  - given-names: Syahid
-    family-names: Anuar
-    orcid: 'https://orcid.org/0000-0001-7869-0257'
-    affiliation: >-
-      Faculty of Artificial Intelligence, Universiti Teknologi
-      Malaysia
-  - given-names: Saad M.
-    family-names: Ijad
-    orcid: 'https://orcid.org/0009-0001-0535-5148'
-    affiliation: >-
-      Department of Computer Science, College of Computer and
-      Information Sciences, King Saud University, Riyadh, Saudi
-      Arabia
-  - given-names: Mohamed
-    family-names: Alkaoud
-    orcid: 'https://orcid.org/0009-0005-5297-5189'
-    affiliation: >-
-      Department of Computer Science, College of Computer and
-      Information Sciences, King Saud University, Riyadh, Saudi
-      Arabia
-repository-code: >-
-  https://github.com/ibrahimjamadi98/HyR_MiniLM_Paper_Reproduction
+title: "Reproduction artifact for \"Interaction-Budget-Matched Analysis of Compact Cross-Encoder Reranking in Hybrid Retrieval\""
+version: "v1.1.0"
+date-released: 2026-09-21
+doi: 10.5281/zenodo.22867583
+repository-code: "https://github.com/ibrahimjamadi98/HyR_MiniLM_Paper_Reproduction"
+url: "https://doi.org/10.5281/zenodo.22867583"
 license: MIT
-version: 1.0.1
-date-released: '2026-08-03'
+abstract: >-
+  Executed reproduction notebook for an interaction-budget-matched analysis
+  of compact cross-encoder reranking in hybrid retrieval across eight BEIR
+  collections. The artifact preserves source code, narrative, tables, figures,
+  and execution outputs while distinguishing cross-encoder interaction count
+  from total online latency, memory, and offline storage.
 keywords:
   - information retrieval
   - hybrid retrieval
   - cross-encoder reranking
   - BEIR
   - efficiency
+authors:
+  - family-names: "Mohd Jamadi"
+    given-names: "Ibrahim"
+    orcid: "https://orcid.org/0009-0007-7571-3354"
+    affiliation: "Faculty of Artificial Intelligence, Universiti Teknologi Malaysia"
+  - family-names: "Anuar"
+    given-names: "Syahid"
+    orcid: "https://orcid.org/0000-0001-7869-0257"
+    affiliation: "Faculty of Artificial Intelligence, Universiti Teknologi Malaysia"
+  - family-names: "Ijad"
+    given-names: "Saad M."
+    orcid: "https://orcid.org/0009-0001-0535-5148"
+    affiliation: "Department of Computer Science, College of Computer and Information Sciences, King Saud University"
+  - family-names: "Alkaoud"
+    given-names: "Mohamed"
+    orcid: "https://orcid.org/0009-0005-5297-5189"
+    affiliation: "Department of Computer Science, College of Computer and Information Sciences, King Saud University"
+preferred-citation:
+  type: article
+  title: "Interaction-Budget-Matched Analysis of Compact Cross-Encoder Reranking in Hybrid Retrieval"
+  journal: "IEEE Access"
+  year: 2026
+  authors:
+    - family-names: "Mohd Jamadi"
+      given-names: "Ibrahim"
+      orcid: "https://orcid.org/0009-0007-7571-3354"
+    - family-names: "Anuar"
+      given-names: "Syahid"
+      orcid: "https://orcid.org/0000-0001-7869-0257"
+    - family-names: "Ijad"
+      given-names: "Saad M."
+      orcid: "https://orcid.org/0009-0001-0535-5148"
+    - family-names: "Alkaoud"
+      given-names: "Mohamed"
+      orcid: "https://orcid.org/0009-0005-5297-5189"

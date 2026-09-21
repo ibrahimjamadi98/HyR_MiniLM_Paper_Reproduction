@@ -1,109 +1,77 @@
-# Reproduction artifact — Budget-Matched Analysis of Compact Cross-Encoder Reranking in Hybrid Retrieval
+# Reproduction artifact - Interaction-Budget-Matched Analysis of Compact Cross-Encoder Reranking in Hybrid Retrieval
 
-Companion code and cached results for the IEEE Access article by Ibrahim Mohd
-Jamadi, Syahid Anuar, Saad M. Ijad and Mohamed Alkaoud.
+Companion code and executed results for the manuscript **"Interaction-Budget-Matched Analysis of Compact Cross-Encoder Reranking in Hybrid Retrieval"**, prepared for submission to *IEEE Access*, by Ibrahim Mohd Jamadi, Syahid Anuar, Saad M. Ijad, and Mohamed Alkaoud.
 
-The article evaluates compact cross-encoder reranking across eight BEIR
-collections and twelve systems under one protocol, holding the cross-encoder
-*budget* fixed rather than the retained depth. This repository contains the
-notebook that produced every reported number.
+The study evaluates compact hybrid retrieval across eight BEIR collections. Its primary comparison controls the number of query-document pairs processed by the cross-encoder and reports total online latency, memory, and offline storage separately. Under budget-constrained leave-one-dataset-out selection, the shallow hybrid configuration reranks 80.5 candidates per query versus 100 for standalone MiniLM-L4 and improves Macro-8 nDCG@10 from 0.4607 to 0.5136. In the measured environment, the complete hybrid pipeline has higher mean online latency: 98.83 ms versus 88.94 ms.
 
----
+The conclusion is deliberately bounded: careful candidate selection and multi-signal fusion can improve compact reranking while using fewer cross-encoder interactions, but this does not imply equal total compute or universal superiority over stronger dense systems.
 
-## What is here
+## Repository contents
 
 | File | Contents |
-|---|---|
-| `HyR_MiniLM_Paper_Reproduction.ipynb` | Consolidated notebook, all outputs preserved as executed |
-| `CITATION.cff` | Citation metadata |
-| `LICENSE` | MIT |
+| --- | --- |
+| `HyR_MiniLM_Paper_Reproduction.ipynb` | Complete executed reproduction notebook with source code, narrative, tables, figures, and preserved outputs |
+| `CITATION.cff` | Citation metadata for the software artifact and manuscript |
+| `LICENSE` | MIT license for the repository code |
 
-Because every cell's output is stored in the notebook, each reported number can
-be read directly from this repository without executing anything.
+The notebook is organized into four parts:
 
-The notebook is organized in three parts:
+1. **Core experimental workflow** - dataset loading, BM25S retrieval, E5 semantic selection, MiniLM reranking, score fusion, evaluation, statistical testing, candidate-depth analysis, peer systems, resource profiling, and routing experiments.
+2. **Extended diagnostic analyses** - gain and variance analysis, the latency frontier, and exact-dense scalability analysis.
+3. **Robustness and selection-separated analyses** - null-corrected oracle analysis, budget-constrained leave-one-dataset-out selection, leave-one-signal-out attribution, and judgement coverage.
+4. **Extended validation and resource analysis** - matched-interaction component attribution, expanded warm-query profiling, query and document characteristics, resource accounting, and BM25 reconciliation.
 
-- **Part I — Core experiments.** BM25 retrieval, E5 candidate selection,
-  cross-encoder scoring, fusion, the component ablation, the peer benchmark,
-  and the oracle and routing analyses.
-- **Part II — Expansion analyses.** Gain-variance correlations, the
-  corpus-size crossover fit, and the accuracy–latency frontier figure.
-- **Part III — Recomputations.** The null-corrected oracle, budget-constrained
-  leave-one-dataset-out selection, leave-one-signal-out attribution, and the
-  judgement-coverage check.
+## Reproducibility scope
 
-A table at the top of the notebook maps every manuscript table and figure to
-the cell that produced it.
+The notebook retains the code used to obtain the BEIR collections, build BM25S indexes, encode E5 document representations, construct hybrid candidate pools, score query-document pairs, evaluate retrieval runs, perform statistical analyses, profile latency and resources, and export the study tables.
 
-## Scope of this artifact
+Saved outputs support inspection without rerunning the expensive stages. Generated indexes, embeddings, scores, and runs may be cached during execution, but these caches are acceleration artifacts rather than the source definition of the experiment. Dataset files and pretrained model checkpoints are obtained from their original providers and are not redistributed.
 
-This is **result reconstruction**, not full end-to-end reproduction. The
-notebook regenerates every reported number from cached component scores.
-Reproducing from scratch additionally requires re-running BM25 indexing, E5
-document encoding (several hours and roughly 8 GB of FP16 embeddings), and
-cross-encoder scoring on comparable hardware.
+A matched budget in this work means a **matched cross-encoder interaction budget**. It does not mean equal total system computation, latency, memory, or storage.
 
-Datasets and pretrained checkpoints are obtained from their original providers
-and are not redistributed here.
+## Running the notebook
 
-## Two known gaps
+The notebook was executed in Google Colab with an NVIDIA A100 GPU. Its default persistent path is:
 
-Reported openly rather than left for a reader to discover.
+```text
+/content/drive/MyDrive/HyR_MiniLM_BEIR_v2
+```
 
-**1. Three tables cannot be regenerated from this notebook.** Manuscript
-Tables 6, 7 and 23 derive from `Table_30_Budget_Matched_Comparison`,
-`Table_31_Budget_Matched_Latency` and `Table_32_GTE_FullCorpus_Latency`. Part II
-loads these from disk; the session that generated them was not saved. The
-values as used are visible in the manuscript and in the Part II cell outputs
-stored in the notebook.
+Change `ROOT` in the setup cell when running elsewhere. The recorded environment includes Python 3.13.15, PyTorch 2.11.0+cu128, Transformers 5.16.1, Sentence-Transformers 5.7.0, BEIR 2.2.0, BM25S 0.3.11, scikit-learn 1.6.1, SciPy 1.16.3, pandas 2.2.3, NumPy 2.1.3, and FlagEmbedding 1.4.2.
 
-**2. Five reranker latencies differ between notebook and manuscript.** Part I
-§31 prints 51.279, 58.792, 80.188, 115.997 and 83.523 ms; manuscript Table 12
-reports 51.6, 59.1, 80.2, 115.8 and 83.4. These came from separate runs of the
-same benchmark. The differences are under 1% and affect no conclusion.
+Key controlled settings include seed 42, BM25 `k1=1.5` and `b=0.75`, maximum sequence length 512, FP16 neural inference on GPU, BEIR-comparable evaluation through `pytrec_eval`, and deterministic document-identifier tie-breaking.
 
-## Superseded results, retained deliberately
+Absolute latency depends on hardware and software configuration. Reproducing the ranking results and reproducing the exact millisecond measurements are therefore separate goals.
 
-Two results are kept under a warning rather than deleted, so the correction
-history stays visible:
+## Archived release
 
-- **Part I §34** reported a null-corrected headroom of 0.0804. The correction
-  subtracted an oracle scored under permuted labels from a baseline scored
-  under true labels — quantities not on a common scale, so the correction never
-  fired. Superseded by **Part III §1.1**, which computes **0.0791** with both
-  terms under the same labels.
-- **Part I §22**, the end-to-end warm-query profile, was superseded by a later
-  re-run at 128.10 ms per query, which is the figure the manuscript uses.
+The matching Zenodo release is **v1.1.0**:
 
-## Running it
+- Version DOI: [10.5281/zenodo.22867583](https://doi.org/10.5281/zenodo.22867583)
+- Concept DOI for all versions: [10.5281/zenodo.21755305](https://doi.org/10.5281/zenodo.21755305)
 
-Built for Google Colab with a GPU runtime. Paths currently point at
-`/content/drive/MyDrive/HyR_MiniLM_BEIR_v2`; change `ROOT` in the setup cell to
-run elsewhere.
+## Citation
 
-Key settings, all fixed in the notebook: seed 42, BM25 `k1=1.5` `b=0.75`,
-input length 512 for every encoder, FP16 cross-encoders, batch size 128 for all
-latency measurement, `pytrec_eval` with linear gain, deterministic
-document-identifier tie-breaking.
-
-## Citing
-
-Please cite the article, and the archived release if you use the code:
+Please cite the manuscript and the archived software release when using this artifact.
 
 ```bibtex
-@article{jamadi2026budget,
-  author  = {Mohd Jamadi, Ibrahim and Anuar, Syahid and
-             Ijad, Saad M. and Alkaoud, Mohamed},
-  title   = {Budget-Matched Analysis of Compact Cross-Encoder Reranking
-             in Hybrid Retrieval},
+@article{jamadi2026interaction,
+  author  = {Mohd Jamadi, Ibrahim and Anuar, Syahid and Ijad, Saad M. and Alkaoud, Mohamed},
+  title   = {Interaction-Budget-Matched Analysis of Compact Cross-Encoder Reranking in Hybrid Retrieval},
   journal = {IEEE Access},
   year    = {2026}
 }
+
+@software{jamadi2026reproduction,
+  author  = {Mohd Jamadi, Ibrahim and Anuar, Syahid and Ijad, Saad M. and Alkaoud, Mohamed},
+  title   = {Reproduction artifact for "Interaction-Budget-Matched Analysis of Compact Cross-Encoder Reranking in Hybrid Retrieval"},
+  version = {v1.1.0},
+  year    = {2026},
+  doi     = {10.5281/zenodo.22867583},
+  url     = {https://doi.org/10.5281/zenodo.22867583}
+}
 ```
 
-## Licence
+## License
 
-Code is released under the MIT Licence (see `LICENSE`). The cached CSV tables
-and derived outputs are released under CC BY 4.0. BEIR collections and
-pretrained model checkpoints remain under their own licences and are not
-redistributed here.
+The repository code is released under the MIT License. BEIR collections and pretrained model checkpoints remain under their respective licenses.
